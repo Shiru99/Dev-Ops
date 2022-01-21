@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
 func main() {
 
@@ -54,10 +57,55 @@ func main() {
 	/****** Dynamic Arrays - Slice ******/
 	var programmingLang []string
 
-	programmingLang = append(programmingLang, "Go", "Java", "Dart", "Python", "Javascript")
-	fmt.Println(programmingLang)
-	fmt.Println(programmingLang[1])
-	// fmt.Println(programmingLang[9])	/* panic: runtime error: index out of range [9] with length 5 */
-	fmt.Println(len(programmingLang))
+	programmingLang = append(programmingLang, "Go lang", "Java lang", "Dart lang", "Python lang", "Javascript lang")
+	// fmt.Println(programmingLang)
+	// fmt.Println(programmingLang[1])
+	// // fmt.Println(programmingLang[9])	/* panic: runtime error: index out of range [9] with length 5 */
+	// fmt.Println(len(programmingLang))
+
+	/****** Loops ******/
+	// var num uint = 0
+	// for i := 0; i < 5; i++ {
+	// 	fmt.Print("Enter your number : ")
+	// 	fmt.Scanln(&num)
+	// 	fmt.Printf("Your input number was : %v\n", num)
+	// }
+
+	// for index, lang := range programmingLang{
+	// 	var langName = strings.Fields(lang)[0]
+	// 	fmt.Printf("%v - %v\n", index, langName)
+	// }
+
+	// _ - blank identifier - used to ignore the value of a variable
+	for _, lang := range programmingLang {
+		var langName = strings.Fields(lang)[0]
+		fmt.Printf("%v\n", langName)
+	}
+
+	var boolTemp bool = true
+	fmt.Printf("value of boolTemp : %v\n", boolTemp)
+
+	// infinite loop
+	// for{ } == for true { }		// will run forever
+
+	var num1 uint = 0
+	// for with condition, as long as condition is true for loop works
+	for boolTemp {
+		fmt.Print("Enter your number : ")
+		fmt.Scanln(&num1)
+
+		if num1 > 99 {
+			fmt.Printf("Sorry, Can't handle 3 digit number\n")
+			break
+		} else if num1 > 9 {
+			fmt.Printf("Please enter single digit number - %v\n", num1)
+			continue
+		} else {
+			if num1==9{
+				boolTemp = false
+			}
+			fmt.Printf("Your input number was : %v\n", num1)
+		}
+	}
 
 }
