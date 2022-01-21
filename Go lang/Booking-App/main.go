@@ -88,24 +88,38 @@ func main() {
 	// infinite loop
 	// for{ } == for true { }		// will run forever
 
-	var num1 uint = 0
-	// for with condition, as long as condition is true for loop works
-	for boolTemp {
-		fmt.Print("Enter your number : ")
-		fmt.Scanln(&num1)
+	// var num1 uint = 0
+	// // for with condition, as long as condition is true for loop works
+	// for boolTemp {
+	// 	fmt.Print("Enter your number : ")
+	// 	fmt.Scanln(&num1)
 
-		if num1 > 99 {
-			fmt.Printf("Sorry, Can't handle 3 digit number\n")
-			break
-		} else if num1 > 9 {
-			fmt.Printf("Please enter single digit number - %v\n", num1)
-			continue
-		} else {
-			if num1==9{
-				boolTemp = false
-			}
-			fmt.Printf("Your input number was : %v\n", num1)
-		}
+	// 	if num1 > 99 {
+	// 		fmt.Printf("Sorry, Can't handle 3 digit number\n")
+	// 		break
+	// 	} else if num1 > 9 {
+	// 		fmt.Printf("Please enter single digit number - %v\n", num1)
+	// 		continue
+	// 	} else {
+	// 		if num1==9{
+	// 			boolTemp = false
+	// 		}
+	// 		fmt.Printf("Your input number was : %v\n", num1)
+	// 	}
+	// }
+
+	city := "Pune"
+
+	switch city {
+	case "Bangalore":
+		fmt.Println("welcome to Bangalore")
+	case "Mumbai","Chennai":
+		fmt.Printf("welcome to %v\n",city)
+	case "Goa":
+		fmt.Println("welcome to Goa")
+		fmt.Println("You can visit nearby beach")
+	default:
+		fmt.Println("welcome to India")
 	}
 
 }
