@@ -3,6 +3,7 @@ package main
 import (
 	"Booking-App/helper"
 	"fmt"
+	"strconv"
 	"strings"
 )
 
@@ -16,6 +17,8 @@ var conferenceName = "'Go Conference'"
 // conferenceName:=  "'Go Conference'"	// error for package level variable
 const conferenceTickets = 50
 
+var remainingTickets uint = 50
+
 func main() {
 
 	/****** Variables & Constants ******/
@@ -24,7 +27,7 @@ func main() {
 
 	// var remainingTickets = 50;
 	// remainingTickets := 50 /* Only for var */
-	var remainingTickets uint = 50 /* Correct method */ // uint - unsigned int (+ve)
+	// var remainingTickets uint = 50 /* Correct method */ // uint - unsigned int (+ve)
 
 	/****** Print statements ******/
 	fmt.Printf("Welcome to %v booking application\n", conferenceName)
@@ -138,8 +141,69 @@ func main() {
 
 	sum, sub, mul, div, rem := helper.Operations(11, 9)
 	fmt.Printf("Summation : %v\nSubtraction : %v\nMultiplication : %v\nDivision : %v\nReminder : %v\n", sum, sub, mul, div, rem)
+
+	addUsers()
 }
 
 func greetings(greet string) {
 	fmt.Println(greet, "from hellothere fun")
+}
+
+func addUsers() {
+
+	var userName string = "default"
+	var mailId string = "default@mail"
+	var userTickets uint = 1
+
+	/******  Input statements ******/
+	fmt.Print("\nEnter your username : ")
+	fmt.Scanln(&userName)
+	fmt.Print("Enter your mail ID : ")
+	fmt.Scanln(&mailId)
+	fmt.Print("Enter number of tickets to book : ")
+	fmt.Scanln(&userTickets)
+
+	var bookedTickets = make([]map[string]string, 0)
+
+	fmt.Println("\nPlease add details for each ticket :")
+
+	for i := 0; i < int(userTickets); i++ {
+
+		/* NO mix datatypes for value/keys in map */
+		// Declaration
+		// var ticketData map[string]string
+
+		// Definition
+		var ticketData = make(map[string]string)
+
+		fmt.Println("\nUser", i+1, ": ")
+
+		var firstName string = "default"
+		var lastName string = "default"
+		var age uint = 0
+
+		fmt.Print("Enter firstname : ")
+		fmt.Scanln(&firstName)
+		fmt.Print("Enter lastname : ")
+		fmt.Scanln(&lastName)
+		fmt.Print("Enter age : ")
+		fmt.Scanln(&age)
+
+		fmt.Printf("seat confirmed for : %v %v, %d\n", firstName, lastName, age)
+		ticketData["firstName"] = firstName
+		ticketData["lastName"] = lastName
+		ticketData["age"] = strconv.FormatUint(uint64(age), 10)
+
+		bookedTickets = append(bookedTickets, ticketData)
+
+	}
+
+	remainingTickets = remainingTickets - userTickets
+	fmt.Printf("\n%v booked %v tickets\n", userName, userTickets)
+	for _, ticket := range bookedTickets {
+		fmt.Printf("\t%v %v - %v\n", ticket["firstName"], ticket["lastName"], ticket["age"])
+	}
+
+	fmt.Printf("Tickets remaining : %v\n", remainingTickets)
+
 }
