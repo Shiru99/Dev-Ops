@@ -45,16 +45,16 @@ func main() {
 	var userTickets uint = 0
 
 	/******  Input statements ******/
-	// fmt.Print("Enter your username : ")
-	// fmt.Scanln(&userName)
-	// fmt.Print("Enter your mail ID : ")
-	// fmt.Scanln(&mailId)
-	// fmt.Print("Enter number of tickets to book : ")
-	// fmt.Scanln(&userTickets)
+	fmt.Print("Enter your username : ")
+	fmt.Scanln(&userName)
+	fmt.Print("Enter your mail ID : ")
+	fmt.Scanln(&mailId)
+	fmt.Print("Enter number of tickets to book : ")
+	fmt.Scanln(&userTickets)
 
-	remainingTickets = remainingTickets - userTickets
-	fmt.Printf("%v booked %v tickets\n", userName, userTickets)
-	fmt.Printf("Tickets remaining : %v\n", remainingTickets)
+	// remainingTickets = remainingTickets - userTickets
+	// fmt.Printf("%v booked %v tickets\n", userName, userTickets)
+	// fmt.Printf("Tickets remaining : %v\n", remainingTickets)
 
 	/****** Arrays ******/
 	// var temp = [50]string{"t1", "t2", "t3"}
@@ -122,19 +122,20 @@ func main() {
 	// 	}
 	// }
 
-	city := "Pune"
+	/****** Switch ******/
+	// city := "Pune"
 
-	switch city {
-	case "Bangalore":
-		fmt.Println("welcome to Bangalore")
-	case "Mumbai", "Chennai":
-		fmt.Printf("welcome to %v\n", city)
-	case "Goa":
-		fmt.Println("welcome to Goa")
-		fmt.Println("You can visit nearby beach")
-	default:
-		fmt.Println("welcome to India")
-	}
+	// switch city {
+	// case "Bangalore":
+	// 	fmt.Println("welcome to Bangalore")
+	// case "Mumbai", "Chennai":
+	// 	fmt.Printf("welcome to %v\n", city)
+	// case "Goa":
+	// 	fmt.Println("welcome to Goa")
+	// 	fmt.Println("You can visit nearby beach")
+	// default:
+	// 	fmt.Println("welcome to India")
+	// }
 
 	greetings("Hello, World!")
 	fmt.Println(sum(88, 11))
@@ -142,26 +143,36 @@ func main() {
 	sum, sub, mul, div, rem := helper.Operations(11, 9)
 	fmt.Printf("Summation : %v\nSubtraction : %v\nMultiplication : %v\nDivision : %v\nReminder : %v\n", sum, sub, mul, div, rem)
 
-	addUsers()
+	/****** Maps ******/
+	// bookedTickets := addUsers(userName, mailId, userTickets)
+
+	// fmt.Printf("\n%v booked %v tickets\n", userName, userTickets)
+	// for _, ticket := range bookedTickets {
+	// 	fmt.Printf("\t%v %v, %v\n", ticket["firstName"], ticket["lastName"], ticket["age"])
+	// }
+
+	// remainingTickets = remainingTickets - userTickets
+	// fmt.Printf("Tickets remaining : %v\n", remainingTickets)
+
+	/****** Struct ******/
+	bookedTickets_ := addUsersUsingStruct(userName, mailId, userTickets)
+
+	fmt.Printf("\n%v booked %v tickets\n", userName, userTickets)
+	fmt.Println(bookedTickets_)
+	for _, ticket := range bookedTickets_ {
+		fmt.Printf("\t%v %v, %v\n", ticket.firstName+" "+ticket.lastName, ticket.email, ticket.age)
+	}
+
+	remainingTickets = remainingTickets - userTickets
+	fmt.Printf("Tickets remaining : %v\n", remainingTickets)
+
 }
 
 func greetings(greet string) {
 	fmt.Println(greet, "from hellothere fun")
 }
 
-func addUsers() {
-
-	var userName string = "default"
-	var mailId string = "default@mail"
-	var userTickets uint = 1
-
-	/******  Input statements ******/
-	fmt.Print("\nEnter your username : ")
-	fmt.Scanln(&userName)
-	fmt.Print("Enter your mail ID : ")
-	fmt.Scanln(&mailId)
-	fmt.Print("Enter number of tickets to book : ")
-	fmt.Scanln(&userTickets)
+func addUsers(userName string, mailID string, userTickets uint) []map[string]string {
 
 	var bookedTickets = make([]map[string]string, 0)
 
@@ -170,11 +181,9 @@ func addUsers() {
 	for i := 0; i < int(userTickets); i++ {
 
 		/* NO mix datatypes for value/keys in map */
-		// Declaration
-		// var ticketData map[string]string
+		// var ticketData map[string]string		// Declaration
 
-		// Definition
-		var ticketData = make(map[string]string)
+		var ticketData = make(map[string]string) // Definition
 
 		fmt.Println("\nUser", i+1, ": ")
 
@@ -198,12 +207,52 @@ func addUsers() {
 
 	}
 
-	remainingTickets = remainingTickets - userTickets
-	fmt.Printf("\n%v booked %v tickets\n", userName, userTickets)
-	for _, ticket := range bookedTickets {
-		fmt.Printf("\t%v %v - %v\n", ticket["firstName"], ticket["lastName"], ticket["age"])
-	}
+	return bookedTickets
+}
 
-	fmt.Printf("Tickets remaining : %v\n", remainingTickets)
+type userDetails struct {
+	firstName string
+	lastName  string
+	email     string
+	age       uint
+}
+
+func addUsersUsingStruct(userName string, mailID string, userTickets uint) []userDetails {
+
+	var bookedTickets = make([]userDetails, 0)
+
+	fmt.Println("\nPlease add details for each ticket :")
+
+	for i := 0; i < int(userTickets); i++ {
+
+		fmt.Println("\nUser", i+1, ": ")
+
+		var firstName string = "default"
+		var lastName string = "default"
+		var email string = "default@mail"
+		var age uint = 0
+
+		fmt.Print("Enter firstname : ")
+		fmt.Scanln(&firstName)
+		fmt.Print("Enter lastname : ")
+		fmt.Scanln(&lastName)
+		fmt.Print("Enter mail id : ")
+		fmt.Scanln(&email)
+		fmt.Print("Enter age : ")
+		fmt.Scanln(&age)
+
+		var ticketData = userDetails{
+			firstName: firstName,
+			lastName:  lastName,
+			email:     email,
+			age:       age,
+		}
+		bookedTickets = append(bookedTickets, ticketData)
+		fmt.Printf("seat confirmed for : %v %v, %d\n", firstName, lastName, age)
+	}
+	return bookedTickets
+}
+
+func sendTickets() {
 
 }
