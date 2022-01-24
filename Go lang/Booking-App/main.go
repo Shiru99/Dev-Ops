@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"strconv"
 	"strings"
+	"time"
 )
 
 // Global Variable vs Package Variable vs Local Variable
@@ -21,151 +22,161 @@ var remainingTickets uint = 50
 
 func main() {
 
-	/****** Variables & Constants ******/
-	// var conferenceName = "'Go Conference'"
-	// const conferenceTickets = 50
+	for {
 
-	// var remainingTickets = 50;
-	// remainingTickets := 50 /* Only for var */
-	// var remainingTickets uint = 50 /* Correct method */ // uint - unsigned int (+ve)
+		/****** Variables & Constants ******/
+		// var conferenceName = "'Go Conference'"
+		// const conferenceTickets = 50
 
-	/****** Print statements ******/
-	fmt.Printf("Welcome to %v booking application\n", conferenceName)
-	// fmt.Println("Reserve your seat quickly, only", remainingTickets, "out of", conferenceTickets, "tickets are remaining")
+		// var remainingTickets = 50;
+		// remainingTickets := 50 /* Only for var */
+		// var remainingTickets uint = 50 /* Correct method */ // uint - unsigned int (+ve)
 
-	/****** Data-type ******/
-	// fmt.Printf("conferenceName - %T, conferenceTickets - %T, remainingTickets - %T\n", conferenceName, conferenceTickets, remainingTickets)
+		/****** Print statements ******/
+		fmt.Printf("Welcome to %v booking application\n", conferenceName)
+		// fmt.Println("Reserve your seat quickly, only", remainingTickets, "out of", conferenceTickets, "tickets are remaining")
 
-	/****** Pointers ******/
-	// fmt.Printf("variable - %v, variable type - %T \n", conferenceName, conferenceName)
-	// fmt.Printf("variable address - %v, variable address type - %T \n", &conferenceName, &conferenceName)
+		/****** Data-type ******/
+		// fmt.Printf("conferenceName - %T, conferenceTickets - %T, remainingTickets - %T\n", conferenceName, conferenceTickets, remainingTickets)
 
-	var userName string = "default"
-	var mailId string = "default@de"
-	var userTickets uint = 0
+		/****** Pointers ******/
+		// fmt.Printf("variable - %v, variable type - %T \n", conferenceName, conferenceName)
+		// fmt.Printf("variable address - %v, variable address type - %T \n", &conferenceName, &conferenceName)
 
-	/******  Input statements ******/
-	fmt.Print("Enter your username : ")
-	fmt.Scanln(&userName)
-	fmt.Print("Enter your mail ID : ")
-	fmt.Scanln(&mailId)
-	fmt.Print("Enter number of tickets to book : ")
-	fmt.Scanln(&userTickets)
+		var userName string = "default"
+		var mailId string = "default@de"
+		var userTickets uint = 0
 
-	// remainingTickets = remainingTickets - userTickets
-	// fmt.Printf("%v booked %v tickets\n", userName, userTickets)
-	// fmt.Printf("Tickets remaining : %v\n", remainingTickets)
+		/******  Input statements ******/
+		fmt.Print("Enter your username : ")
+		fmt.Scanln(&userName)
+		fmt.Print("Enter your mail ID : ")
+		fmt.Scanln(&mailId)
+		fmt.Print("Enter number of tickets to book : ")
+		fmt.Scanln(&userTickets)
 
-	/****** Arrays ******/
-	// var temp = [50]string{"t1", "t2", "t3"}
-	var bookings [50]string
-	bookings[0] = "*"
-	bookings[25] = userName + "." + mailId
-	bookings[49] = "*"
+		remainingTickets = remainingTickets - userTickets
+		fmt.Printf("Tickets remaining : %v\n", remainingTickets)
+		// fmt.Printf("%v booked %v tickets\n", userName, userTickets)
 
-	// fmt.Println(bookings[25])
-	// fmt.Println(bookings)
-	// fmt.Printf("Array length - %T\n",bookings)
-	// fmt.Println(len(bookings))
+		/****** Arrays ******/
+		// var temp = [50]string{"t1", "t2", "t3"}
+		var bookings [50]string
+		bookings[0] = "*"
+		bookings[25] = userName + "." + mailId
+		bookings[49] = "*"
 
-	/****** Dynamic Arrays - Slice ******/
-	var programmingLang []string
+		// fmt.Println(bookings[25])
+		// fmt.Println(bookings)
+		// fmt.Printf("Array length - %T\n",bookings)
+		// fmt.Println(len(bookings))
 
-	programmingLang = append(programmingLang, "Go lang", "Java lang", "Dart lang", "Python lang", "Javascript lang")
-	// fmt.Println(programmingLang)
-	// fmt.Println(programmingLang[1])
-	// // fmt.Println(programmingLang[9])	/* panic: runtime error: index out of range [9] with length 5 */
-	// fmt.Println(len(programmingLang))
+		/****** Dynamic Arrays - Slice ******/
+		var programmingLang []string
 
-	/****** Loops ******/
-	// var num uint = 0
-	// for i := 0; i < 5; i++ {
-	// 	fmt.Print("Enter your number : ")
-	// 	fmt.Scanln(&num)
-	// 	fmt.Printf("Your input number was : %v\n", num)
-	// }
+		programmingLang = append(programmingLang, "Go lang", "Java lang", "Dart lang", "Python lang", "Javascript lang")
+		// fmt.Println(programmingLang)
+		// fmt.Println(programmingLang[1])
+		// // fmt.Println(programmingLang[9])	/* panic: runtime error: index out of range [9] with length 5 */
+		// fmt.Println(len(programmingLang))
 
-	// for index, lang := range programmingLang{
-	// 	var langName = strings.Fields(lang)[0]
-	// 	fmt.Printf("%v - %v\n", index, langName)
-	// }
+		/****** Loops ******/
+		// var num uint = 0
+		// for i := 0; i < 5; i++ {
+		// 	fmt.Print("Enter your number : ")
+		// 	fmt.Scanln(&num)
+		// 	fmt.Printf("Your input number was : %v\n", num)
+		// }
 
-	// _ - blank identifier - used to ignore the value of a variable
-	for _, lang := range programmingLang {
-		var langName = strings.Fields(lang)[0]
-		fmt.Printf("%v\n", langName)
+		// for index, lang := range programmingLang{
+		// 	var langName = strings.Fields(lang)[0]
+		// 	fmt.Printf("%v - %v\n", index, langName)
+		// }
+
+		// _ - blank identifier - used to ignore the value of a variable
+		for _, lang := range programmingLang {
+			var langName = strings.Fields(lang)[0]
+			fmt.Printf("%v\n", langName)
+		}
+
+		var boolTemp bool = true
+		fmt.Printf("value of boolTemp : %v\n", boolTemp)
+
+		// infinite loop
+		// for{ } == for true { }		// will run forever
+
+		// var num1 uint = 0
+		// // for with condition, as long as condition is true for loop works
+		// for boolTemp {
+		// 	fmt.Print("Enter your number : ")
+		// 	fmt.Scanln(&num1)
+
+		// 	if num1 > 99 {
+		// 		fmt.Printf("Sorry, Can't handle 3 digit number\n")
+		// 		break
+		// 	} else if num1 > 9 {
+		// 		fmt.Printf("Please enter single digit number - %v\n", num1)
+		// 		continue
+		// 	} else {
+		// 		if num1==9{
+		// 			boolTemp = false
+		// 		}
+		// 		fmt.Printf("Your input number was : %v\n", num1)
+		// 	}
+		// }
+
+		/****** Switch ******/
+		// city := "Pune"
+
+		// switch city {
+		// case "Bangalore":
+		// 	fmt.Println("welcome to Bangalore")
+		// case "Mumbai", "Chennai":
+		// 	fmt.Printf("welcome to %v\n", city)
+		// case "Goa":
+		// 	fmt.Println("welcome to Goa")
+		// 	fmt.Println("You can visit nearby beach")
+		// default:
+		// 	fmt.Println("welcome to India")
+		// }
+
+		greetings("Hello, World!")
+		fmt.Println(sum(88, 11))
+
+		sum, sub, mul, div, rem := helper.Operations(11, 9)
+		fmt.Printf("Summation : %v\nSubtraction : %v\nMultiplication : %v\nDivision : %v\nReminder : %v\n", sum, sub, mul, div, rem)
+
+		/****** Maps ******/
+		// bookedTickets := addUsers(userName, mailId, userTickets)
+
+		// fmt.Printf("\n%v booked %v tickets\n", userName, userTickets)
+		// for _, ticket := range bookedTickets {
+		// 	fmt.Printf("\t%v %v, %v\n", ticket["firstName"], ticket["lastName"], ticket["age"])
+		// }
+
+		/****** Struct ******/
+		bookedTickets_ := addUsersUsingStruct(userName, mailId, userTickets)
+
+		fmt.Printf("\n%v booked %v tickets\n", userName, userTickets)
+		fmt.Println(bookedTickets_)
+		for _, ticket := range bookedTickets_ {
+			fmt.Printf("\t%v %v, %v\n", ticket.firstName+" "+ticket.lastName, ticket.email, ticket.age)
+		}
+
+		/****** Concurrency ******/
+		go sendTickets(userName, mailId, userTickets, bookedTickets_)
+
+		var toContinue bool
+		fmt.Print("Want to book more tickets (true/false): ")
+		fmt.Scanln(&toContinue)
+		if !toContinue {
+			fmt.Println("Thanks! for using our service. have a great day!")
+			break
+		} else {
+			fmt.Println("Please book next ticket")
+		}
+
 	}
-
-	var boolTemp bool = true
-	fmt.Printf("value of boolTemp : %v\n", boolTemp)
-
-	// infinite loop
-	// for{ } == for true { }		// will run forever
-
-	// var num1 uint = 0
-	// // for with condition, as long as condition is true for loop works
-	// for boolTemp {
-	// 	fmt.Print("Enter your number : ")
-	// 	fmt.Scanln(&num1)
-
-	// 	if num1 > 99 {
-	// 		fmt.Printf("Sorry, Can't handle 3 digit number\n")
-	// 		break
-	// 	} else if num1 > 9 {
-	// 		fmt.Printf("Please enter single digit number - %v\n", num1)
-	// 		continue
-	// 	} else {
-	// 		if num1==9{
-	// 			boolTemp = false
-	// 		}
-	// 		fmt.Printf("Your input number was : %v\n", num1)
-	// 	}
-	// }
-
-	/****** Switch ******/
-	// city := "Pune"
-
-	// switch city {
-	// case "Bangalore":
-	// 	fmt.Println("welcome to Bangalore")
-	// case "Mumbai", "Chennai":
-	// 	fmt.Printf("welcome to %v\n", city)
-	// case "Goa":
-	// 	fmt.Println("welcome to Goa")
-	// 	fmt.Println("You can visit nearby beach")
-	// default:
-	// 	fmt.Println("welcome to India")
-	// }
-
-	greetings("Hello, World!")
-	fmt.Println(sum(88, 11))
-
-	sum, sub, mul, div, rem := helper.Operations(11, 9)
-	fmt.Printf("Summation : %v\nSubtraction : %v\nMultiplication : %v\nDivision : %v\nReminder : %v\n", sum, sub, mul, div, rem)
-
-	/****** Maps ******/
-	// bookedTickets := addUsers(userName, mailId, userTickets)
-
-	// fmt.Printf("\n%v booked %v tickets\n", userName, userTickets)
-	// for _, ticket := range bookedTickets {
-	// 	fmt.Printf("\t%v %v, %v\n", ticket["firstName"], ticket["lastName"], ticket["age"])
-	// }
-
-	// remainingTickets = remainingTickets - userTickets
-	// fmt.Printf("Tickets remaining : %v\n", remainingTickets)
-
-	/****** Struct ******/
-	bookedTickets_ := addUsersUsingStruct(userName, mailId, userTickets)
-
-	fmt.Printf("\n%v booked %v tickets\n", userName, userTickets)
-	fmt.Println(bookedTickets_)
-	for _, ticket := range bookedTickets_ {
-		fmt.Printf("\t%v %v, %v\n", ticket.firstName+" "+ticket.lastName, ticket.email, ticket.age)
-	}
-
-	remainingTickets = remainingTickets - userTickets
-	fmt.Printf("Tickets remaining : %v\n", remainingTickets)
-
 }
 
 func greetings(greet string) {
@@ -253,6 +264,20 @@ func addUsersUsingStruct(userName string, mailID string, userTickets uint) []use
 	return bookedTickets
 }
 
-func sendTickets() {
+func sendTickets(userName string, mailID string, userTickets uint, bookedtickets []userDetails) {
+	var mailBody string = fmt.Sprintf("\nHi %v,\n\n"+"Your booked tickets are : \n\n", userName)
+	// var mailBody string = "\nHi " + userName + ",\n\n" + "Your booked tickets are : \n\n"
 
+	for _, ticket := range bookedtickets {
+		mailBody = mailBody + "\t" + ticket.firstName + " " + ticket.lastName + ", " + ticket.email + ", " + strconv.FormatUint(uint64(ticket.age), 10) + "\n"
+	}
+
+	mailBody = mailBody + "\n\nThanks,\nTeam Hellothere"
+
+	time.Sleep(20 * time.Second)
+	fmt.Println("############################")
+	fmt.Printf("Sending ticket details to email address : %v\n", mailID)
+	fmt.Println(mailBody)
+	fmt.Println("############################")
+	fmt.Println("Done")
 }
