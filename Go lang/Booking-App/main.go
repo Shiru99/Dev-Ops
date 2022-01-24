@@ -1,15 +1,20 @@
 package main
 
 import (
+	"Booking-App/helper"
 	"fmt"
 	"strings"
 )
 
+// Global Variable vs Package Variable vs Local Variable
+// Global variables - 1st letter capital
+// var GlobalVariable string = "I'm Global Variable"
+
 // Package level variables
 var conferenceName = "'Go Conference'"
+
 // conferenceName:=  "'Go Conference'"	// error for package level variable
 const conferenceTickets = 50
-
 
 func main() {
 
@@ -119,8 +124,8 @@ func main() {
 	switch city {
 	case "Bangalore":
 		fmt.Println("welcome to Bangalore")
-	case "Mumbai","Chennai":
-		fmt.Printf("welcome to %v\n",city)
+	case "Mumbai", "Chennai":
+		fmt.Printf("welcome to %v\n", city)
 	case "Goa":
 		fmt.Println("welcome to Goa")
 		fmt.Println("You can visit nearby beach")
@@ -129,20 +134,12 @@ func main() {
 	}
 
 	greetings("Hello, World!")
-	fmt.Println(sum(88,11))
+	fmt.Println(sum(88, 11))
 
-	sum, sub, mul, div, rem := operations(11,9)
-	fmt.Printf("Summation : %v\nSubtraction : %v\nMultiplication : %v\nDivision : %v\nReminder : %v",sum,sub,mul,div,rem)
+	sum, sub, mul, div, rem := helper.Operations(11, 9)
+	fmt.Printf("Summation : %v\nSubtraction : %v\nMultiplication : %v\nDivision : %v\nReminder : %v\n", sum, sub, mul, div, rem)
 }
 
-func operations(num1, num2 int) (int,int,int,int,int) {
-	return num1+num2,num1-num2,num1*num2,num1/num2, num1%num2
-}
-
-func greetings(greet string){
-	fmt.Println(greet,"from hellothere fun")
-}
-
-func sum(num1 int, num2 int) int{
-	return num1+num2
+func greetings(greet string) {
+	fmt.Println(greet, "from hellothere fun")
 }

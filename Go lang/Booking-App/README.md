@@ -9,5 +9,7 @@ To initialize project or module
 
 To run
 
-    $ go run main.go 
+    $ go run main.go
+    $ go run main.go helper.go
+    $ go run .
 
