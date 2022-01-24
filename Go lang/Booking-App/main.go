@@ -5,11 +5,17 @@ import (
 	"strings"
 )
 
+// Package level variables
+var conferenceName = "'Go Conference'"
+// conferenceName:=  "'Go Conference'"	// error for package level variable
+const conferenceTickets = 50
+
+
 func main() {
 
 	/****** Variables & Constants ******/
-	var conferenceName = "'Go Conference'"
-	const conferenceTickets = 50
+	// var conferenceName = "'Go Conference'"
+	// const conferenceTickets = 50
 
 	// var remainingTickets = 50;
 	// remainingTickets := 50 /* Only for var */
@@ -122,4 +128,21 @@ func main() {
 		fmt.Println("welcome to India")
 	}
 
+	greetings("Hello, World!")
+	fmt.Println(sum(88,11))
+
+	sum, sub, mul, div, rem := operations(11,9)
+	fmt.Printf("Summation : %v\nSubtraction : %v\nMultiplication : %v\nDivision : %v\nReminder : %v",sum,sub,mul,div,rem)
+}
+
+func operations(num1, num2 int) (int,int,int,int,int) {
+	return num1+num2,num1-num2,num1*num2,num1/num2, num1%num2
+}
+
+func greetings(greet string){
+	fmt.Println(greet,"from hellothere fun")
+}
+
+func sum(num1 int, num2 int) int{
+	return num1+num2
 }
