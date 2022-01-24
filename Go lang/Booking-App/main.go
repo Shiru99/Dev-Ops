@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"strconv"
 	"strings"
+	"sync"
 	"time"
 )
 
@@ -19,6 +20,8 @@ var conferenceName = "'Go Conference'"
 const conferenceTickets = 50
 
 var remainingTickets uint = 50
+
+var waitGroup = sync.WaitGroup{}
 
 func main() {
 
@@ -163,13 +166,17 @@ func main() {
 			fmt.Printf("\t%v %v, %v\n", ticket.firstName+" "+ticket.lastName, ticket.email, ticket.age)
 		}
 
-		/****** Concurrency ******/
+		/****** Concurrency & Synchronization ******/
+		waitGroup.Add(1) // 1 - for 1 new thread
 		go sendTickets(userName, mailId, userTickets, bookedTickets_)
 
 		var toContinue bool
 		fmt.Print("Want to book more tickets (true/false): ")
 		fmt.Scanln(&toContinue)
 		if !toContinue {
+			fmt.Println("please wait! Shuting down background processes...")
+			// this thread (main thread) will wait until all the threads in waitGroup are Done.
+			waitGroup.Wait()
 			fmt.Println("Thanks! for using our service. have a great day!")
 			break
 		} else {
@@ -280,4 +287,6 @@ func sendTickets(userName string, mailID string, userTickets uint, bookedtickets
 	fmt.Println(mailBody)
 	fmt.Println("############################")
 	fmt.Println("Done")
+	// thread comes to end
+	waitGroup.Done()
 }
