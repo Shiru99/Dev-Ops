@@ -23,9 +23,22 @@ var remainingTickets uint = 50
 
 var waitGroup = sync.WaitGroup{}
 
+// Custom type declaration
+type list_ []string
+
+// Reciever function
+func (l list_) printing(){
+	for _,element:= range l{
+		fmt.Println(element)
+	}
+}
+
 func main() {
 
-	for {
+	shoppingList := list_{"pen","pencil","xerox"}
+	shoppingList.printing()
+
+	for false{
 
 		/****** Variables & Constants ******/
 		// var conferenceName = "'Go Conference'"
