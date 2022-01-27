@@ -38,6 +38,15 @@ func main() {
 	shoppingList := list_{"pen", "pencil", "xerox"}
 	shoppingList.printing()
 
+	// byte slice is a collection of bytes (8-bit unsigned integers) 
+	// string to byte slice 
+	str := "Hello there"
+	fmt.Println([]byte(str))
+
+	// byte slice to string
+	fmt.Println(string([]byte{72, 101, 108, 108, 111}))
+
+
 	for false {
 
 		/****** Variables & Constants ******/
