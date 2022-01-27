@@ -7,6 +7,10 @@ To initialize project or module
 
     $ go mod init Booking-App
 
+To Build
+
+    $ go build main.go
+
 To run
 
     $ go run main.go
