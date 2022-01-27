@@ -26,19 +26,19 @@ var waitGroup = sync.WaitGroup{}
 // Custom type declaration
 type list_ []string
 
-// Reciever function
-func (l list_) printing(){
-	for _,element:= range l{
+// Receiver function
+func (l list_) printing() {
+	for _, element := range l {
 		fmt.Println(element)
 	}
 }
 
 func main() {
 
-	shoppingList := list_{"pen","pencil","xerox"}
+	shoppingList := list_{"pen", "pencil", "xerox"}
 	shoppingList.printing()
 
-	for false{
+	for false {
 
 		/****** Variables & Constants ******/
 		// var conferenceName = "'Go Conference'"
