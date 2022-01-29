@@ -61,6 +61,24 @@ func main() {
 		value types : int float string bool structs (Use pointers to change this thing in a function)
 		reference types : slices maps channels pointers functions
 	*/
+
+		/************ Maps **************/
+		colors := map[string]string{
+			"Red":   "#ff0000",
+			"Green": "#4bf745",
+			"Blue":  "#0000ff",
+			"White": "#ffffff",
+			"Black": "#000000",
+		}
+	
+		// To delete a key from map
+		delete(colors, "Yellow")
+		delete(colors, "Black")
+	
+	
+		for key, value := range colors {
+			fmt.Printf("%v : %v\n", key, value)
+		}
 }
 
 // Receiver function
