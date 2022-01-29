@@ -2,6 +2,12 @@ package main
 
 import "fmt"
 
+// Interface type : must implement all functions
+type bot interface {
+	getGreetings() string
+	// getBotVersion() float64 	
+}
+
 type englishBot struct{}
 type spanishBot struct{}
 
@@ -10,23 +16,26 @@ func main()  {
 	sb := spanishBot{}
 
 	printGreeting(eb)
-	printGreeting2(sb)
+	printGreeting(sb)
 }
 
-// func (eb englishBot) getGreetings() string{
+// func (eb englishBot) getGreetings() string{ 		// Receiver function
 func (englishBot) getGreetings() string{
 	return "Hi There!"
 }
-
-func printGreeting(eb englishBot) {
-	fmt.Println(eb.getGreetings())
-}
-
 
 func (spanishBot) getGreetings() string{
 	return "Hola!"
 }
 
-func printGreeting2(sb spanishBot) {
-	fmt.Println(sb.getGreetings())
+func printGreeting(b bot){
+	fmt.Println(b.getGreetings())
 }
+
+// func printGreeting(eb englishBot) {
+// 	fmt.Println(eb.getGreetings())
+// }
+
+// func printGreeting2(sb spanishBot) {
+// 	fmt.Println(sb.getGreetings())
+// }
