@@ -17,6 +17,8 @@ func main()  {
 
 	printGreeting(eb)
 	printGreeting(sb)
+
+	heyGoogle()
 }
 
 // func (eb englishBot) getGreetings() string{ 		// Receiver function
