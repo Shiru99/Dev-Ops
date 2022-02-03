@@ -1,18 +1,28 @@
-version: '3.7'
+version: "3"
 services:
-    postgres:
-        image: postgres:latest
-        restart: always
-        environment:
-          - POSTGRES_USER=user
-          - POSTGRES_PASSWORD=1234
-        logging:
-          options:
-            max-size: 10m
-            max-file: "3"
-        ports:
-          - '5432:5432'
-        # volumes: 
-        #   - ./postgres-data:/var/lib/postgresql/data
-        #   # copy the sql script to create tables
-        #   - ./sql/create_tables.sql:/docker-entrypoint-initdb.d/create_tables.sql
+  classroom-service:
+    build: .
+    container_name: classroom-service
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://database:5432/classroom
+    ports:
+      - 12346:12346
+    restart: always
+    depends_on:
+      - database
+  database:
+    image: postgres:latest
+    container_name: database
+    environment:
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=1234
+      - POSTGRES_DB=classroom
+      - PGDATA=/var/lib/postgresql/data/pgdata
+    ports:
+      - 5432:5432
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    restart: always
+volumes:
+  pgdata:
+          

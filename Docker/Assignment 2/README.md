@@ -15,16 +15,13 @@ Spring Boot + PostgreSQL Application
 
 ---
 
-### To Build Image :
+### To Build & Run (Docker + Spring-Boot) :
 
-    $ docker build -f Dockerfile -t hello-docker-world .
+    $ sudo docker-compose up
+
+    http://localhost:12346/api/classroom/getCourses
+
+### To Stop (Docker + Spring-Boot) :
+
+    $ sudo docker-compose down
     
-### Run the image (container) :
-
-    $ docker run --name hello-world-service -it -d -p 12345:12345 hello-docker-world 
-
-    http://localhost:12345/api/hello-world/
-
-### Stop the container :
-
-    $ docker stop <container_id>
