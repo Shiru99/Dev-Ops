@@ -2,7 +2,7 @@
 
 ## Creating a containerized spring boot application :
 
-Spring Boot + PostgreSQL Application
+Simple Hello World spring boot application
 
 
 ## Application Structure
@@ -10,11 +10,5 @@ Spring Boot + PostgreSQL Application
 * Service I
 
     $ java -jar hello-docker-world-0.0.1-SNAPSHOT.jar
-
-* DataBase (Postgresql):
-
-* Service - II
-
-    $ java -jar classroom-0.0.1-SNAPSHOT.jar
 
 ---
