@@ -79,6 +79,12 @@ Different Components of Kubernetes:
     
         $ kubectl get nodes / pods / replicaSets / deployments / services / ingress / configmap / secret / statefulset
 
+        $ kubectl get pods -o wide (wide format)
+
+        $ kubectl get deployments <deployment-name> -o yaml (ETCD stores deployment info in YAML format)
+
+        $ kubectl get pods <pod-name> -o yaml (details in YAML format)
+
 2. Deploy new deployment
         
         $ kubectl create deployment <pod_name> --image=<image_name>
@@ -99,24 +105,26 @@ Different Components of Kubernetes:
     
         $ kubectl apply -f <file_name>
 
-5. Info about a pod
+5. Delete deployment using file
+    
+        $ kubectl delete -f <file_name>
+
+6. Info about a pod / deployment / service / ingress / configmap / secret / statefulset
     
         $ kubectl describe pod <pod_name>
 
-6. Logs for a pod
+7. Logs for a pod
     
         $ kubectl logs <pod_name>
 
-7. Access to a pod's bash shell
+8. Access to a pod's bash shell
     
         $ kubectl exec -it <pod_name> -- /bin/bash Or -- /bin/sh
 
-8. Delete a pod
+9. Delete a pod / deployment / service / ingress / configmap / secret / statefulset
     
-        $ kubectl delete pod <pod_name>
+        $ kubectl delete pod <pod_name> 
 
-9. Delete a Deployment (until one deletes deployment, pods get recreated automatically)
+    (until one deletes deployment, pods get recreated automatically)
     
-        $ kubectl delete deployment <deployment_name>
-
 ---
