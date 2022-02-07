@@ -64,3 +64,59 @@ Different Components of Kubernetes:
     * Like deployment but with state (persistent data) for database services
 
 ---
+
+### MiniKube
+
+```
+    $ minikube start --driver=docker
+```
+
+---
+
+## Kubernetes Commands:
+
+1. Kubernetes Status for Nodes (Master + Worker) / Pods (running containers) / ReplicaSets / Deployments / Services / Ingress /  ConfigMap / Secret / StatefulSet
+    
+        $ kubectl get nodes / pods / replicaSets / deployments / services / ingress / configmap / secret / statefulset
+
+2. Deploy new deployment
+        
+        $ kubectl create deployment <pod_name> --image=<image_name>
+    <!-- kubectl create deployment nginx-depl --image=nginx:latest -->
+    <!-- $ eval $(minikube docker-env unset) / $ minikube docker-env unset -->
+        
+    From local docker image 
+
+        $ eval $(minikube docker-env)
+        $ minikube image load <image-name>  
+        $ kubectl run <pod-name> --image=<image-name>  --image-pull-policy=IfNotPresent
+
+3. Edit deployment
+    
+        $ kubectl edit deployment <deployment_name>
+
+4.  Create/Update deployment using file
+    
+        $ kubectl apply -f <file_name>
+
+5. Info about a pod
+    
+        $ kubectl describe pod <pod_name>
+
+6. Logs for a pod
+    
+        $ kubectl logs <pod_name>
+
+7. Access to a pod's bash shell
+    
+        $ kubectl exec -it <pod_name> -- /bin/bash Or -- /bin/sh
+
+8. Delete a pod
+    
+        $ kubectl delete pod <pod_name>
+
+9. Delete a Deployment (until one deletes deployment, pods get recreated automatically)
+    
+        $ kubectl delete deployment <deployment_name>
+
+---
