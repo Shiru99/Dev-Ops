@@ -9,5 +9,5 @@ spec:
     app: postgres-db
   ports:
   - protocol: TCP
-    port: 9876
-    targetPort: 1234
+    port: 5432
+    targetPort: 5432

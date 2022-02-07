@@ -19,7 +19,7 @@ spec:
         image: postgres:latest
         ports:
         - protocol: TCP
-          containerPort: 1234
+          containerPort: 5432
         env:
         - name: POSTGRES_DB
           value: "classroom"
