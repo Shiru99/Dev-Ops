@@ -68,9 +68,14 @@ Different Components of Kubernetes:
 ### MiniKube
 
 ```
-    $ minikube start --driver=docker
+    $ minikube start --driver=docker (While accessing service from external network getting - connection refused)
+
+    Or 
+
+    $ minikube start  --vm-driver none
 ```
 
+Alternative - https://kubernetes.io/docs/tutorials/kubernetes-basics/create-cluster/cluster-interactive/
 ---
 
 ## Kubernetes Commands:
