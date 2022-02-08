@@ -128,3 +128,26 @@ Different Components of Kubernetes:
     (until one deletes deployment, pods get recreated automatically)
     
 ---
+
+## Useful K8s Aliases:
+
+    alias k='kubectl '
+    alias kg='kubectl get '
+    alias kd='kubectl describe '
+    alias kr='kubectl run '
+
+    alias kci='kubectl cluster-info'
+    alias krm='kubectl delete '
+    alias kex='kubectl exec -i -t '
+    alias klo='kubectl logs '
+
+    alias kga='kubectl get all '
+    alias kgp='kubectl get pods '
+    alias kdp='kubectl describe pod '
+    alias kcd='kubectl create deployment '
+
+    alias kaf='kubectl apply -f '
+    alias kdf='kubectl delete -f '
+    alias krf='kubectl replace -f '
+
+---
