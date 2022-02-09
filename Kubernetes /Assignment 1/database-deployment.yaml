@@ -17,6 +17,7 @@ spec:
       containers:
       - name: postgres-db
         image: postgres:latest
+        imagePullPolicy: Never    # To use local image & not to pull from the registry
         ports:
         - protocol: TCP
           containerPort: 5432

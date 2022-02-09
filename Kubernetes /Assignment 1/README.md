@@ -14,10 +14,12 @@ Create K8s cluster - Internal Postgres service + Spring Boot Application connect
 4. Classroom-Config (ConfigMap for DB URL)
 5. Classroom-Deployment (spring boot app)
 6. Classroom-Service (External Service - for accessing the spring boot app)
+    
+    OR
 
-or 
+6. Internal Service + Ingress (Ingress + Ingress Controller)
+(In general service provider provides Cloud Load Balancer which redirects traffic to the ingress controller)
 
-6. Internal Service + Ingress
 
 ---
 
@@ -31,17 +33,31 @@ or
 
 2. Postgres image 
 
+---
+
 ### Execution
 
-    $ kubectl delete -f database-secrete.yaml && kubectl delete -f database-deployment.yaml && kubectl delete -f database-service.yaml && kubectl delete -f classroom-config.yaml && kubectl delete -f classroom-deployment.yaml && kubectl delete -f classroom-service.yaml
+        $ kubectl delete -f database-secrete.yaml && kubectl delete -f database-deployment.yaml && kubectl delete -f database-service.yaml && kubectl delete -f classroom-config.yaml && kubectl delete -f classroom-deployment.yaml && kubectl delete -f classroom-service.yaml
 
-    $ kubectl apply -f database-secrete.yaml && kubectl apply -f database-deployment.yaml && kubectl apply -f database-service.yaml && kubectl apply -f classroom-config.yaml && kubectl apply -f classroom-deployment.yaml
+        $ kubectl apply -f database-secrete.yaml && kubectl apply -f database-deployment.yaml && kubectl apply -f database-service.yaml && kubectl apply -f classroom-config.yaml && kubectl apply -f classroom-deployment.yaml
     
-    $ kubectl apply -f classroom-service.yaml
+M-1 : Using external service
 
-    $ minikube service classroom-service (To assign external IP address to the service) - http://192.168.49.2:32123 [ERROR - connection refused for docker driver]
+        $ kubectl apply -f classroom-service.yaml
 
-    $ kubectl get all
+        $ minikube service classroom-service (To assign external IP address to the service) - http://192.168.49.2:32123 [ERROR - connection refused for docker driver]
+
+M-2 : Using Ingress :
+
+        $ minikube addons enable ingress (for ingress controller)
+
+        $ kubectl get pods -n ingress-nginx Or kubectl get pods -n kube-system (To check if ingress controller is running)
+
+        $ kubectl apply -f classroom-service.yaml
+
+        $ kubectl apply -f classroom-ingress.yaml
+
+Add ingress Address with hostname to /etc/hosts
 
 ---
 
