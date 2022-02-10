@@ -37,19 +37,23 @@ Create K8s cluster - Internal Postgres service + Spring Boot Application connect
 
 ---
 
-### Execution
+### Commands for the assignment
 
-        $ kubectl delete -f database-secrete.yaml && kubectl delete -f database-deployment.yaml && kubectl delete -f database-service.yaml && kubectl delete -f classroom-config.yaml && kubectl delete -f classroom-deployment.yaml && kubectl delete -f classroom-service.yaml && kubectl delete -f classroom-ingress.yaml
+    $ kubectl delete -f database-secrete.yaml && kubectl delete -f database-deployment.yaml && kubectl delete -f database-service.yaml && kubectl delete -f classroom-config.yaml && kubectl delete -f classroom-deployment.yaml && kubectl delete -f classroom-service.yaml && kubectl delete -f classroom-ingress.yaml
 
-        $ kubectl apply -f database-secrete.yaml && kubectl apply -f database-deployment.yaml && kubectl apply -f database-service.yaml && kubectl apply -f classroom-config.yaml && kubectl apply -f classroom-deployment.yaml
+    $ kubectl apply -f database-secrete.yaml && kubectl apply -f database-deployment.yaml && kubectl apply -f database-service.yaml && kubectl apply -f classroom-config.yaml && kubectl apply -f classroom-deployment.yaml
     
-M-1 : Using external service
+* M-1 : Using external service
 
         $ kubectl apply -f classroom-service.yaml
 
-        $ minikube service classroom-service (To assign external IP address to the service) - http://192.168.49.2:32123 [ERROR - connection refused for docker driver]
+        $ minikube service classroom-service (To assign external IP address to the service)
 
-M-2 : Using Ingress :
+    * To Verify : [ERROR - connection refused for docker driver]
+
+            $ curl -Is http://172.17.0.12:32123/api/classroom/ (External Service)
+
+* M-2 : Using Ingress :
 
         $ minikube addons enable ingress (for ingress controller)
 
@@ -59,11 +63,11 @@ M-2 : Using Ingress :
 
         $ kubectl apply -f classroom-ingress.yaml
 
-Add ingress Address with hostname to /etc/hosts
+    * Add ingress Address with hostname to /etc/hosts
 
-To Verify :
+    * To Verify :
 
-        $  curl -Is  http://classroom-example.com/api/classroom/
+            $ curl -Is http://classroom-example.com/api/classroom/ (Ingress + Service)
 
 ---
 
