@@ -20,7 +20,7 @@ spec:
         imagePullPolicy: Never    # To use local image & not to pull from the registry
         ports:
         - protocol: TCP
-          containerPort: 1234
+          containerPort: 12346
         env:
         - name: SPRING_DATASOURCE_URL
           valueFrom: 

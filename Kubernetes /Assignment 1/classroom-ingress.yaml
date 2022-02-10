@@ -3,16 +3,16 @@ kind: Ingress
 metadata:
   name: classroom-ingress
   annotations:
-    ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
 spec:
     rules:
       - host: classroom-example.com
         http:
           paths:
-          - path: /
+          - path: /api/classroom/
             pathType: Prefix
             backend:
               service:
                 name: classroom-service
                 port:
-                  number: 1234
+                  number: 12346

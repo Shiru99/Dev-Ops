@@ -11,8 +11,8 @@
 #   type: LoadBalancer    # Makes the service publicly accessible (External Service)
 #   ports:
 #   - protocol: TCP
-#     port: 1234
-#     targetPort: 1234
+#     port: 12346
+#     targetPort: 12346
 #     nodePort: 32123     # Port for the service to be exposed on the cluster
 
 
@@ -28,5 +28,5 @@ spec:
     app: classroom-app
   ports:
   - protocol: TCP
-    port: 1234
-    targetPort: 1234
+    port: 12346
+    targetPort: 12346
