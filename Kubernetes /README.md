@@ -156,3 +156,38 @@ Alternative - https://kubernetes.io/docs/tutorials/kubernetes-basics/create-clus
     alias krf='kubectl replace -f '
 
 ---
+
+## Namespaces
+    
+namespace is a way to organize your resources by creating virtual clusters inside a cluster
+
+1. default Namespaces :
+
+    * kube-system - system processes like master & kubectl processes (no edit access)
+    * kube-public - publicly accessible data (e.g. ConfigMap of cluster-info, etc)
+    * kube-node-lease - stores heartbeats (availability of nodes)
+    * default - default namespace
+
+            $ kubectl get namespaces
+            $ kubectl create namespace <namespace_name>
+            $ kubectl delete namespace <namespace_name>
+            $ kubectl create -f <file_name> --namespace <namespace_name> 
+            OR set in configuration file - metadata.namespace = <namespace_name>
+
+2. Resources like ConfigMaps & Secrets can't be shared across namespaces but services can.
+3. Node & volumes are not bound to any namespaces.
+
+        $ kubectl api-resources --namespaced=false
+
+4. Why to use namespaces?
+
+    * Resources grouped in namespaces e.g. database,web-app, monitoring, elastic stack, Nginx-Ingress controller, etc
+    * Resources sharing (e.g. database, elastic stack, shared between staging & production OR different production versions)
+    * Limiting resources(CPU, RAM, storage) or Limiting access to resources (e.g. only admin can edit database, only admin can edit elastic stack, etc)
+
+5. To switch the namespace
+
+        $ brew install kubectx / kubens
+        $ kubens <namespace_name>
+
+---
