@@ -8,3 +8,7 @@
 
 * The only disadvantage is the Protobuf files or data isn’t as human-readable as JSON or XML
 
+
+## Installation
+
+    $ brew install protobuf

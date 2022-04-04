@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package myPackage;
+
+message DetailedDate {
+    TimeStamp timestamp = 1;
+    int32 day = 2;
+    int32 month = 3;
+    int32 year = 4;
+}
+
+message TimeStamp{
+    int32 hour = 1;
+    int32 minute = 2;
+    int32 second = 3;
+}

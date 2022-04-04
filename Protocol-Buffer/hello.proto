@@ -1,5 +1,11 @@
 syntax = "proto3";
 
+// import path according to project directory structure
+import "date.proto";
+import "my-package.proto";
+
+package hello.world;
+
 /*
     Main Datatypes :
 
@@ -40,4 +46,28 @@ message Person {
     };
 
     BloodGroup blood_group = 9;
+
+    message Address{
+        string street_name = 1;
+        int32 street_number = 2;
+        string city = 3;
+        string state = 4;
+        string country = 5;
+        int32 zip_code = 6;
+    };
+
+    Address office_address = 10;
+
+    Date birth_date = 11;
+    myPackage.TimeStamp birth_time = 12;
+    myPackage.DetailedDate last_login = 13;
+    
 }
+
+/*
+    message Date {
+        int32 day = 1;
+        int32 month = 2;
+        int32 year = 3;
+    }
+*/
