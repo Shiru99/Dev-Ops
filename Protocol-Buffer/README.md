@@ -12,3 +12,8 @@
 ## Installation
 
     $ brew install protobuf
+
+## Generate Code using Protobuf
+
+    $ mkdir js/
+    $ protoc --js_out=js *.proto
