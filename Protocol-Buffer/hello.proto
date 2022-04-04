@@ -1,0 +1,43 @@
+syntax = "proto3";
+
+/*
+    Main Datatypes :
+
+        bool - default false
+        string - default empty string
+        int32 - default 0
+        int64 - default 0
+        float - default 0.0
+        double - default 0.0
+        repeated - default empty list
+        enum - default first enum value - 0
+        bytes - default empty bytes
+        
+        bytes is a special type that is used to store a sequence of bytes
+
+*/
+
+message Person {
+
+    int32 age = 1;          
+    string name = 2;
+    float height = 4;
+    double weight = 5;
+    bool is_married = 6;
+
+    // small_profile_pic represents a small profile picture file
+    bytes small_profile_pic = 7;
+    
+    // repeated -> list of objects
+    repeated string phone_numbers = 8;  
+
+    enum BloodGroup {
+        unknown = 0;
+        A = 1;
+        B = 2;
+        AB = 3;
+        O = 4;
+    };
+
+    BloodGroup blood_group = 9;
+}
