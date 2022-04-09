@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package hello;
+
+option go_package = "./hello";
+
+message Person {
+
+    int32 age = 1;          
+    string name = 2;
+    float height = 4;
+    double weight = 5;
+    bool is_married = 6;
+}
