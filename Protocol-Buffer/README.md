@@ -20,12 +20,17 @@
 
 ## Generate Go Code using Protobuf
 
+    $ brew install go
+
+    $ echo export GOPATH=$HOME/go >> ~/.bash_profile
+    $ echo export PATH=$PATH:$GOPATH/bin >> ~/.bash_profile
+    $ source ~/.bash_profile
+
     $ brew install protobuf
     
     $ go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
 
-    $ go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
+    $ go env -w GO111MODULE=off
 
-    $ go install github.com/golang/protobuf/protoc-gen-go@latest
 
 
