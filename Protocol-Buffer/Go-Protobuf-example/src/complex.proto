@@ -1,0 +1,50 @@
+syntax = "proto3";
+
+import "hello.proto";
+
+package complex;
+option go_package = "./mypb";
+
+enum Day {
+    SUNDAY = 0;
+    MONDAY = 1;
+    TUESDAY = 2;
+    WEDNESDAY = 3;
+    THURSDAY = 4;
+    FRIDAY = 5;
+    SATURDAY = 6;
+}
+
+enum Month{
+    JANUARY = 0;
+    FEBRUARY = 1;
+    MARCH = 2;
+    APRIL = 3;
+    MAY = 4;
+    JUNE = 5;
+    JULY = 6;
+    AUGUST = 7;
+    SEPTEMBER = 8;
+    OCTOBER = 9;
+    NOVEMBER = 10;
+    DECEMBER = 11;
+}
+
+message AppointmentDate {
+    Day day = 1;
+    int32 date = 2;
+    Month month = 3;
+    int32 year = 4;
+}
+
+message AppointmentBook{
+    string name = 1;
+    AppointmentDate appointmentDate = 2;
+    repeated hello.Person patients = 3;
+    map<string, string> contactDetails = 4;
+
+    oneof appointmentStatus {
+        bool isCancelled = 5;
+        string reason = 9;
+    }
+}
