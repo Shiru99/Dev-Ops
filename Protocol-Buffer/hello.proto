@@ -61,6 +61,12 @@ message Person {
     Date birth_date = 11;
     myPackage.TimeStamp birth_time = 12;
     myPackage.DetailedDate last_login = 13;
+
+    // If you have a message with many fields and where at most one field will be set at the same time, you can enforce this behavior and save memory by using the oneof feature.
+    oneof vacationStatus {
+        bool isCancelled = 14;
+        string vacationPlan = 15;
+    }
     
 }
 
