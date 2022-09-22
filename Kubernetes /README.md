@@ -2,11 +2,11 @@
 
 ## Kubernetes Components
 
-### Master Node (Kubernetes Control Plane)
+### 1. Master Node (Kubernetes Control Plane)
 
 Master Node Processes:
 
-* API Server - cluster gateway (entrypoint) + authentication 
+* API Server - entrypoint of cluster (for k8s configuration) 
 * Scheduler - schedules pods onto the nodes (depending on load of nodes)
 * Controller Manager - detects changes in the cluster (dying of pods, etc) and makes changes to the cluster
 * Etcd - manages the cluster's storage (key-value data store for cluster state i.e. pod status, health, etc)
@@ -15,7 +15,7 @@ for multiple master nodes, the API Server is load balanced & ETCD is distributed
 
 ---
 
-### Worker Nodes (Kubernetes Compute Nodes)
+### 2. Worker Nodes (Kubernetes Compute Nodes)
 
 Worker Node Processes:
 
@@ -34,8 +34,9 @@ Different Components of Kubernetes:
 
 * Service:
 
-    * Provides permanent IP addresses for pods
-    * Load balancing
+    * Provides permanent IP addresses for pods 
+    * common IP address for all pod replicas
+    * Load balancer between pod replicas
 
 * Ingress:
 
