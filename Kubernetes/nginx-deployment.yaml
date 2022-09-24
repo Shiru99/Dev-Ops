@@ -1,0 +1,32 @@
+apiVersion: apps/v1   # Kubernetes v1.7.0
+kind: Deployment  # Deployment is a Kubernetes resource type
+
+# 1. Metadata for the deployment
+metadata:
+  labels:
+    app: nginx
+  name: nginx-deployment
+
+# 2. Specification for the deployment
+spec:
+  replicas: 2  # Number of replicas
+     
+  selector:
+    matchLabels:  
+      app: nginx-app  # should match - template.metadata.labels.app: nginx-app
+
+  template:
+    # a. Metadata for the pod
+    metadata:
+      labels:
+        app: nginx-app   # should match - Service selector app: nginx-app
+    # b. Specification for container(pod)
+    spec:
+      containers:
+      - name: nginx-container # Name of the container 
+        image: nginx:latest   # Image name
+        ports:                # Ports to expose from the container
+        - protocol: TCP
+          containerPort: 5678
+
+# 3. Status (Automatically generated & added by K8s)

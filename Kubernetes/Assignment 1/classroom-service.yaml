@@ -1,0 +1,32 @@
+# # External Service :
+# apiVersion: v1
+# kind: Service
+
+# metadata:
+#   name: classroom-service
+
+# spec:
+#   selector: 
+#     app: classroom-app
+#   type: LoadBalancer    # Makes the service publicly accessible (External Service)
+#   ports:
+#   - protocol: TCP
+#     port: 12346
+#     targetPort: 12346
+#     nodePort: 32123     # Port for the service to be exposed on the cluster
+
+
+# Internal Service : (for ingress)
+apiVersion: v1
+kind: Service
+
+metadata:
+  name: classroom-service
+
+spec:
+  selector: 
+    app: classroom-app
+  ports:
+  - protocol: TCP
+    port: 12346
+    targetPort: 12346
