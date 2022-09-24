@@ -20,7 +20,7 @@ spec:
         resources:
           limits:
             memory: 512Mi
-            cpu: "1"
+            cpu: "0.2"
         imagePullPolicy: Never    # To use local image & not to pull from the registry
         ports:
         - protocol: TCP
