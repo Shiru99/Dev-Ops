@@ -7,7 +7,9 @@ metadata:
 spec:
   selector: 
     app: postgres-db
+    tier: database
+  clusterIP: None
   ports:
-  - protocol: TCP
-    port: 5432
-    targetPort: 5432
+    - protocol: TCP
+      port: 5432
+      targetPort: 5432

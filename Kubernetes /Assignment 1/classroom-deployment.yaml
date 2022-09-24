@@ -17,6 +17,10 @@ spec:
       containers:
       - name: classroom-app
         image: classroom-service  # local docker image (from docker assignment 2)
+        resources:
+          limits:
+            memory: 512Mi
+            cpu: "1"
         imagePullPolicy: Never    # To use local image & not to pull from the registry
         ports:
         - protocol: TCP

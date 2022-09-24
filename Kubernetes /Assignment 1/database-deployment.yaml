@@ -5,7 +5,7 @@ metadata:
     app: postgres
   name: postgres-db
 spec:
-  replicas:
+  replicas: 1
   selector:
     matchLabels:  
       app: postgres-db
@@ -17,13 +17,17 @@ spec:
       containers:
       - name: postgres-db
         image: postgres:latest
+        resources:
+          limits:
+            memory: 512Mi
+            cpu: "1"
         imagePullPolicy: Never    # To use local image & not to pull from the registry
         ports:
         - protocol: TCP
           containerPort: 5432
         env:
         - name: POSTGRES_DB
-          value: "classroom"
+          value: classroom
         - name: POSTGRES_USER
           valueFrom:
             secretKeyRef:

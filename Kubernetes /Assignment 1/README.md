@@ -39,9 +39,9 @@ Create K8s cluster - Internal Postgres service + Spring Boot Application connect
 
 ### Commands for the assignment
 
-    $ kubectl delete -f database-secrete.yaml && kubectl delete -f database-deployment.yaml && kubectl delete -f database-service.yaml && kubectl delete -f classroom-config.yaml && kubectl delete -f classroom-deployment.yaml && kubectl delete -f classroom-service.yaml && kubectl delete -f classroom-ingress.yaml
+    $ kubectl delete -f classroom-config.yaml && kubectl delete -f database-secrete.yaml && kubectl delete -f database-deployment.yaml && kubectl delete -f database-service.yaml && kubectl delete -f classroom-deployment.yaml && kubectl delete -f classroom-service.yaml && kubectl delete -f classroom-ingress.yaml
 
-    $ kubectl apply -f database-secrete.yaml && kubectl apply -f database-deployment.yaml && kubectl apply -f database-service.yaml && kubectl apply -f classroom-config.yaml && kubectl apply -f classroom-deployment.yaml
+    $ kubectl apply -f classroom-config.yaml && kubectl apply -f database-secrete.yaml && kubectl apply -f database-deployment.yaml && kubectl apply -f database-service.yaml && kubectl apply -f classroom-deployment.yaml
     
 * M-1 : Using external service
 
