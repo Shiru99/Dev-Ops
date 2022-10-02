@@ -1,7 +1,7 @@
 version: "3"
 services:
   classroom-service:
-    build: .
+    build: .      # build from Dockerfile in current directory
     container_name: classroom-service
     environment:
       SPRING_DATASOURCE_URL: jdbc:postgresql://database:5432/classroom
@@ -21,7 +21,7 @@ services:
     ports:
       - 5432:5432
     volumes:
-      - pgdata:/var/lib/postgresql/data
+      - pgdata:/var/lib/postgresql/data # mount volume to persist data
     restart: always
 volumes:
   pgdata:

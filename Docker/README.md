@@ -2,184 +2,59 @@
 
 ## Docker Commands:
 
-<!-- | Command Name                                          | Command                                           |      
-| :---------------------------------------------------: | :-----------------------------------------------: |
-|  Docker Version                                       | $ docker --version                                | 
-|  Docker Pull Image                                    | $ docker pull <image_name>                        | 
-|  List  Docker Images                                  | $ docker images                                   |
-|  Run the Docker Image (pull+run)                      | $ docker run <image_name>                         |
-|  Lists all the docker containers (running)            | $ docker ps                                       |
-|  List all the docker containers                       | $ docker ps -a                                    |
-|  Start the docker container                           | $ docker start <container_id>                     |
-|  Stop the docker container                            | $ docker stop <container_id>                      |
-|  Restart the docker container                         | $ docker restart <container_id>                   |
-|  Stop the docker container immediately                | $ docker kill <container_id>                      |
-|  Remove the docker container                          | $ docker rm <container_id>                        | 
-|  Remove all the docker containers                     | $ docker rm $(docker ps -a -q)                    | 
-|  Remove the docker image                              | $ docker rmi <image_id>                           | -->
+| Command Name                                          | Command                                           |      
+| :--------------------------------------------------- | :----------------------------------------------- |
+|  Docker Version                                       | `$ docker --version`                                | 
+|  Docker Info                                          | `$ docker info`                                     |
+|  List  Docker Images                                  | `$ docker images`                                   |
+|  Run the Docker Image (pull+run)                      | `$ docker run <image_name>` <br> `$ docker run -it -d -e <env_var>=<value> -p <port_num_machine>:<port_num_container> --name <container_name> <image_name>` <br> (it : Interactive mode, d : Detached mode, -e : Env variable, -p : Port mapping) |
+|  Lists all the docker containers (running)            | `$ docker ps`                                      |
+|  List all the docker containers                       | `$ docker ps -a`                                   |
+| Search for an image in Docker Hub                     | `$ docker search <image_name>`                      |
+|  Start the docker container                           | `$ docker start <container_id>`                     |
+|  Stop the docker container                            | `$ docker stop <container_id>`                      |
+|  Restart the docker container                         | `$ docker restart <container_id>`                   |
+|  Stop the docker container immediately                | `$ docker kill <container_id>`                      |
+|  Remove the docker container                          | `$ docker rm <container_id>`                        | 
+|  Remove all the docker containers                     | `$ docker rm $(docker ps -a -q)`                    | 
+|  Remove the docker image                              | `$ docker rmi <image_id>`                           |
+|  Remove all the docker images                         | `$ docker rmi $(docker images -q)`                  |
+| Access the docker container's bash | `$ docker exec -it <container_id> /bin/bash` |
+|  Access the docker container's bash as root           | `$ docker exec -it -u root <container_id> /bin/bash` |
+| Save a new docker image (on the local system) | `$ docker commit <container_id> <image_name>` |
+| Login into docker hub | `$ docker login` |
+| Push the docker image to docker hub | `$ docker push <image_name>` |
+| Pull the docker image from docker hub | `$ docker pull <image_name>` |
+| List all the docker networks | `$ docker network ls` |
+| Create a new docker network | `$ docker network create <network_name>` |
+| Connect a docker container to a network | `$ docker network connect <network_name> <container_id>` |
+| Disconnect a docker container from a network | `$ docker network disconnect <network_name> <container_id>` |
+| Remove a docker network | `$ docker network rm <network_name>` |
+| List all the docker volumes | `$ docker volume ls` |
+| Create a new docker volume | `$ docker volume create <volume_name>` |
+| Connect a docker container to a volume | `$ docker volume connect <volume_name> <container_id>` |
+| Disconnect a docker container from a volume | `$ docker volume disconnect <volume_name> <container_id>` |
+| Remove a docker volume | `$ docker volume rm <volume_name>` |
+| logs of the docker container | `$ docker logs <container_id>` |
+| history of the docker image | `$ docker history <image_name>` |
+| inspect the docker container | `$ docker inspect <container_id>` |
+| copy files from the docker container to the local system | `$ docker cp <container_id>:<path_in_container> <path_in_local_system>` |
+| copy files from the local system to the docker container | `$ docker cp <path_in_local_system> <container_id>:<path_in_container>` |
+| export the docker container as a tar file | `$ docker export <container_id> > <tar_file_name>` |
+| Build the docker image from the Dockerfile | `$ docker build -t <image_name> .` |
+| logout from docker hub | `$ docker logout` |
 
 
+## Docker Compose Commands:
 
-1. Docker Version
-```
-$ docker --version
-```
-
-2. Docker Pull Image
-```
-$ docker pull <image_name>
-```
-
-3. Docker Images
-```
-$ docker images
-```
-
-4. Run the Docker Image (pull+run)
-```
-$ docker run <image_name>
-
-$ docker run -it -d -p <port_num_machine>:<port_num_container> <image_name> 
-
-(it : Interactive mode, d : Detached mode, -p : Port mapping)
-
-$ docker run --name myPostgres -p 5867:5432 -d -e POSTGRES_PASSWORD=toor postgres 
-```
-
-5. Lists all the docker containers (running)
-```
-$ docker ps
-```
-
-6. List all the docker containers
-```
-$ docker ps -a
-```
-
-7. Start the docker container
-```
-$ docker start <container_id>
-```
-
-8. Stop the docker container
-```
-$ docker stop <container_id>
-```
-
-9. Restart the docker container
-```
-$ docker restart <container_id>
-```
-
-10. Stop the docker container immediately
-```
-$ docker kill <container_id>
-``` 
-
-11. Remove the docker container
-``` 
-$ docker rm <container_id>
-```
-
-12. Remove all the docker containers
-```
-$ docker rm $(docker ps -a -q)
-```
-
-13. Remove the docker image
-``` 
-$ docker rmi <image_id>
-```
-
-14. Access the docker container and run commands inside the container
-```
-$ docker exec -it <container_id> /bin/bash
-```
-
-15. Remove all the docker images
-```
-$ docker rmi $(docker images -q)
-```
-
-16. Save a new docker image (on the local system)
-```
-$ docker commit <container_id> <image_name>
-```
-
-17. Login into docker hub
-```
-$ docker login
-``` 
-
-18. Upload a docker image (on DockerHub)
-```
-$ docker push <image_name>
-```
-
-19. Get detailed information about docker installed
-```
-$ docker info
-```
-
-20. Copy a file from a docker container to the local system
-```
-$ docker cp <container_id>:/path/to/file /path/to/file
-```
-
-21. history of a docker image
-```
-$ docker history <image_name>
-```
-
-22. logs of the docker container
-```
-$ docker logs <container_id>
-```
-
-23. Search for a docker image on DockerHub
-```
-$ docker search <image_name>
-```
-
-24. Update container configurations
-```
-$ docker update --help
-$ docker update <container_id>
-```
-
-25. Build an image form a Docker file
-```
-$ docker build -t <image_name> .
-```
-
-26. Exports a container’s filesystem as a tar archive
-```
-$ docker export <container_id> > <image_name>.tar
-```
-
-27. Attaches to a running container
-```
-$ docker attach <container_id>
-```
-
-25. lists the details of all the network
-```
-$ docker network ls
-```
-
-26. Install a docker plugin
-```
-$ docker plugin install <plugin_name>
-```
-
-27. Create a volume which docker container will use to store data
-```
-$ docker volume create <volume_name>
-
-$ docker volume ls
-```
-
-28. Logging out from DockerHub
-```
-$ docker logout
-```
+| Command Name                                          | Command                                           |
+| :--------------------------------------------------- | :----------------------------------------------- |
+|  Docker Compose Version                               | `$ docker-compose --version`                       |
+|  Docker Compose Build                                  | `$ docker-compose build`                           |
+|  Docker Compose Up                                    | `$ docker-compose up`                              |
+|  Docker Compose Up (detached mode)                    | `$ docker-compose up -d`                           |
+|  Docker Compose Down                                  | `$ docker-compose down`                            |
+|  Docker Compose Stop                                  | `$ docker-compose stop`                            |
+|  Docker Compose Start                                 | `$ docker-compose start`                           |
+|  Docker Compose Restart                               | `$ docker-compose restart`                         |
+|  Docker Compose Logs                                  | `$ docker-compose logs`                            |
